@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { color-scheme: dark; }
+
+body {
+  min-height: 100vh;
+  color: #e6efe8;
+  background:
+    radial-gradient(1100px 600px at 18% -10%, #15432e 0%, transparent 60%),
+    radial-gradient(900px 520px at 100% 0%, #0f3324 0%, transparent 55%),
+    #08190f;
+  background-attachment: fixed;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 4px 4px;
+  z-index: 0;
+}
+main { position: relative; z-index: 1; }
+
+@layer components {
+  .panel {
+    @apply rounded-[20px] border border-white/[0.07];
+    background: linear-gradient(180deg, rgba(21, 55, 39, 0.88), rgba(13, 38, 27, 0.92));
+    box-shadow: 0 14px 34px -16px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+  .felt {
+    @apply rounded-2xl border border-white/[0.08];
+    background: radial-gradient(ellipse at 50% 25%, #0f6a43 0%, #0a4a2f 55%, #083622 100%);
+    box-shadow: inset 0 2px 30px rgba(0, 0, 0, 0.35);
+  }
+  .well { @apply rounded-xl bg-felt-900/90 border border-white/[0.04]; }
+  .btn-ghost {
+    @apply inline-flex items-center gap-1.5 rounded-xl border border-white/[0.08] bg-felt-900/70 px-3 py-1.5 text-sm text-ink-muted transition-colors hover:text-ink hover:bg-felt-800;
+  }
+  .gold-grad {
+    background: linear-gradient(180deg, #f6d98a 0%, #e0a83a 100%);
+    box-shadow: 0 6px 16px -6px rgba(224, 168, 58, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  .field-label { @apply mb-2 text-[12px] text-ink-muted; }
+}
+
+button:focus-visible, input:focus-visible {
+  outline: 2px solid #f0c24f;
+  outline-offset: 2px;
+}
+input[type="number"]::-webkit-inner-spin-button { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
